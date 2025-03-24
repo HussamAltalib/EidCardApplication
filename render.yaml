@@ -4,5 +4,5 @@ services:
     env: java
     buildCommand: "./mvnw clean package -DskipTests"
     startCommand: "java -jar target/*.jar"
-    region: oregon
     plan: free
+    region: oregon
