@@ -1,8 +1,10 @@
 services:
   - type: web
     name: eid-card
-    env: java
     buildCommand: "./mvnw clean package -DskipTests"
     startCommand: "java -jar target/*.jar"
-    plan: free
+    envVars:
+      - key: JAVA_HOME
+        value: /opt/render/project/.java
     region: oregon
+    plan: free
