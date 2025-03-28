@@ -8,12 +8,41 @@
 <body class="bg-gray-100 py-10 px-4">
 <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow text-center">
     <h1 class="text-2xl font-bold mb-4">🎉 أنشئ بطاقتك للعيد</h1>
-    <form th:action="@{/generate}" method="post" class="space-y-4">
-        <input type="text" name="name" placeholder="اكتب اسمك" required class="w-full border px-3 py-2 rounded text-right">
-        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
-            أنشئ البطاقة
+    <form action="/generate" method="post">
+        <!-- Name input -->
+        <input type="text" name="name" placeholder="اسمك" required class="w-full border px-3 py-2 rounded text-right"/>
+
+        <!-- Template choices -->
+        <div style="display: flex; gap: 20px; justify-content: center; margin: 20px 0;">
+            <label style="text-align: center;">
+                <input type="radio" name="template" value="template1" checked /><br />
+                <img src="/cards/template1.png" width="100" />
+            </label>
+            <label style="text-align: center;">
+                <input type="radio" name="template" value="template2" /><br />
+                <img src="/cards/template2.png" width="100" />
+            </label>
+            <label style="text-align: center;">
+                <input type="radio" name="template" value="template3" /><br />
+                <img src="/cards/template3.png" width="100" />
+            </label>
+        </div>
+
+        <!-- Generate Button -->
+        <button type="submit" style="
+              background-color: #28a745;
+              color: white;
+              padding: 10px 24px;
+              font-size: 16px;
+              border: none;
+              border-radius: 6px;
+              cursor: pointer;
+            ">
+            🎉 أنشئ البطاقة
         </button>
+
     </form>
+
 </div>
 </body>
 </html>
