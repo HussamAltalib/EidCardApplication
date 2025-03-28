@@ -21,9 +21,11 @@ public class EidCardController {
     }
 
     @PostMapping("/generate")
-    public String generate(@RequestParam String name, Model model) throws IOException, FontFormatException {
-        // Load the base image
-        BufferedImage card = ImageIO.read(new File("src/main/resources/static/cards/template1.png"));
+    public String generate(@RequestParam String name,
+                           @RequestParam String template,
+                           Model model) throws IOException, FontFormatException {
+        // Pick the image dynamically
+        BufferedImage card = ImageIO.read(new File("src/main/resources/static/cards/" + template + ".png"));
         Graphics2D g = card.createGraphics();
 
         // Set smooth rendering for better quality
@@ -47,7 +49,7 @@ public class EidCardController {
         g.drawString(displayText, x, y);
         g.dispose();
 
-        // Save image
+        // Save generated image
         String filename = UUID.randomUUID() + ".png";
         File output = new File("src/main/resources/static/generated/" + filename);
         output.getParentFile().mkdirs();
